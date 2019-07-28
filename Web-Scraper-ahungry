@@ -1,0 +1,38 @@
+#!/usr/bin/python3
+
+'''
+
+div class="auc"
+    <b class="aud" how long ago it was
+    <b class="slr" playername
+    <b class="aul" (WTS) and the (1 stack 140p)
+        <a class="ii" Leather Padding (after the link)
+'''
+import requests
+from bs4 import BeautifulSoup
+import re
+
+#specifies URL
+url = ('http://ahungry.com/eqauctions-live')
+result = requests.get(url)
+html = result.text
+
+soup = BeautifulSoup( html, 'html.parser')
+
+data = soup.find_all('div', {'class' : 'auc'})
+for b in data:
+    timestamp = b.find('b', {'class' : 'aud'})
+    playername = b.find('b', {'class' : 'slr'})
+    auction = b.find('b', {'class' : 'aul'})
+
+
+
+
+what_time = timestamp.text
+player = playername.text
+auctioned = auction.text
+
+
+#print(cost)
+
+print(what_time,': '+ player,': '+ auctioned)
