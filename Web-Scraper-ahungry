@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-'''
+''' HTML DATA
 
 div class="auc"
     <b class="aud" how long ago it was
@@ -24,7 +24,8 @@ for b in data:
     timestamp = b.find('b', {'class' : 'aud'})
     playername = b.find('b', {'class' : 'slr'})
     auction = b.find('b', {'class' : 'aul'})
-
+for price in auction:
+    cost = price.find('a')
 
 
 
@@ -32,7 +33,7 @@ what_time = timestamp.text
 player = playername.text
 auctioned = auction.text
 
-
+#
 #print(cost)
 
-print(what_time,': '+ player,': '+ auctioned)
+print(what_time,': '+ player,': '+ auctioned, cost)
