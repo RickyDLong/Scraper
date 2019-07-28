@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+#Scrapes auction data off of Project 1999's ahungry.com live auction site
 ''' HTML DATA
 
 div class="auc"
@@ -12,7 +12,6 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-#specifies URL
 url = ('http://ahungry.com/eqauctions-live')
 result = requests.get(url)
 html = result.text
@@ -27,13 +26,8 @@ for b in data:
 for price in auction:
     cost = price.find('a')
 
-
-
 what_time = timestamp.text
 player = playername.text
 auctioned = auction.text
-
-#
-#print(cost)
 
 print(what_time,': '+ player,': '+ auctioned, cost)
